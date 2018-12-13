@@ -3,6 +3,7 @@ const listStudents = [];
 class Student {
 
   static addStudent(name, age, isFemale) {
+    // (undefined !== age && Number.isInteger(age)) => Only use Number.isInteger(age) is enough
     if (name !== '' && (undefined !== age && Number.isInteger(age)) && typeof(isFemale) === 'boolean') {
       return listStudents.push({
         name: name,
@@ -10,15 +11,16 @@ class Student {
         isFemale: isFemale
       });
     }
-
+    // should use new Error();
     throw 'Something went wrong!';
   }
 
   static getStudentByIndex(index) {
+    //
     if (undefined !== index && Number.isInteger(index)) {
       return listStudents[index];
     }
-
+    //
     throw 'Wrong index!';
   }
 
@@ -26,6 +28,7 @@ class Student {
     if (listStudents.length > 0) {
       listStudents.map(function(student) {
         if (student.name === name) {
+          // should return student. get functionality always return data.
           console.log(student);
         }
       });
@@ -34,6 +37,7 @@ class Student {
 
   static deleteStudentByName(name) {
     if (listStudents.length > 0) {
+      // use let instead of var.
       for( var i = 0; i < listStudents.length; i++) { 
         if ( listStudents[i].name === name) {
          listStudents.splice(i, 1); 
