@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import connectToDb from './db/connect';
 import user from './routes/user.routes';
-import classes from './routes/class.routes';
+import group from './routes/group.routes';
 import Validation from 'express-validation';
 
 const server = express();
@@ -15,13 +15,13 @@ server.use(bodyParser.urlencoded({
 }));
 
 server.use(user);
-server.use(classes);
+server.use(group);
 
 server.use((err, req, res, next) => {
   return res.status(400).json({
 		isSuccess: false,
-		message: e.message || 'Have error', // Get message from new Error()
-		error: e.stack || e
+		message: err.message || 'Have error', // Get message from new Error()
+		error: err.stack || err
 	})
 });
 server.listen(3000, () => {

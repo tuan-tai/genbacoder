@@ -20,7 +20,7 @@ router.get('/users', UserController.getAll);
 router.get('/users/:id', UserController.getOneUser);// req.params
 router.post('/users', [ Validate(createUser) ], UserController.addUser); // req.body
 router.put('/users/:id', [ Validate(updateUser) ], UserController.updateUser); // req.body
-router.delete('/users/:id', [ Validate(deleteUser) ], UserController.deleteUser);
+router.delete('/users/:id', UserController.deleteUser);
 
 
 export default router;
