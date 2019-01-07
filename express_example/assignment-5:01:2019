@@ -1,0 +1,10 @@
+5/01/2019
+1. Code lại authentication + refactor.
+2. Thay MD5 - Bcrypt
+3. Làm chức năng thay đổi mật khẩu của user.
+- Yêu cầu nhập mật khẩu cũ,
+- Yêu cầu nhập mật khẩu mới,
+- Yêu cầu nhập lại mật khẩu mới,
+- Update thành công mật khẩu.
+
+Deadline: 8PM thứ 2: 7/12/2019

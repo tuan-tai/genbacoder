@@ -1,27 +1,28 @@
 'use strict';
 import Joi from 'joi';
 
-exports.createUser = {
+exports.create = {
     body: {
-        name: Joi.string().required().min(2).max(255)
+        fullName: Joi.object().keys({
+            first: Joi.string().min(3).max(30),
+            last: Joi.string().min(3).max(30)
+        }),
+        email: Joi.string().required().email({ minDomainAtoms: 2 }).min(3).max(30),
+        password: Joi.string().required().min(3).max(30)
+
     },
 };
 
-exports.updateUser = {
+exports.update = {
     body: {
-        name: Joi.string().min(2).max(255)
+        fullName: Joi.object().keys({
+            first: Joi.string().min(3).max(30),
+            last: Joi.string().min(3).max(30)
+        }),
+        email: Joi.string().email({ minDomainAtoms: 2 })
     },
     params: {
     	id: Joi.string().required()
     }
 };
 
-exports.deleteUser = {
-  body: {
-    email: Joi.string().email({minDomainAtoms: 2}),
-    password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
-  },
-  params: {
-    id: Joi.string().required(),
-  }
-};
